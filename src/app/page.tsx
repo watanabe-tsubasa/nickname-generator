@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from 'react';
 import { generateNickname } from './actions';
+import { BackgroundAnimation } from './BackgroundAnimation';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -17,16 +18,30 @@ export default function Home() {
   };
 
   return (
-    <div className="font-sans grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <header className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">ニックネームジェネレーター</h1>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">OpenAI APIとNext.js Server Actionsを利用</p>
+    <div className="relative font-sans min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      {/* 背景アニメーション */}
+      <div className="absolute inset-0 -z-10">
+        <BackgroundAnimation />
+      </div>
+
+      <header className="text-center relative z-10 p-8">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl text-blue-600 drop-shadow-lg">
+          あだ名錬成マシーン3000
+        </h1>
+        <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
+          OpenAI APIとNext.js Server Actionsで遊んでみよう
+        </p>
       </header>
 
-      <main className="flex flex-col gap-8 w-full max-w-md">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <main className="flex flex-col gap-8 w-full max-w-md mx-auto relative z-10">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">名前を入力してください</label>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2"
+            >
+              名前を入力してください
+            </label>
             <input
               id="name"
               type="text"
@@ -47,15 +62,15 @@ export default function Home() {
         </form>
 
         {nickname && (
-          <div className="mt-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+          <div className="mt-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md relative z-10">
             <h2 className="text-2xl font-semibold mb-4">生成されたニックネーム</h2>
             <p className="text-gray-800 dark:text-gray-100 whitespace-pre-wrap">{nickname}</p>
           </div>
         )}
       </main>
 
-      <footer className="text-center text-sm text-gray-500">
-        <p>Powered by Next.js and OpenAI</p>
+      <footer className="text-center text-sm text-gray-500 mt-10 relative z-10">
+        <p>Powered by Next.js, OpenAI, and a sprinkle of p5.js ✨</p>
       </footer>
     </div>
   );
