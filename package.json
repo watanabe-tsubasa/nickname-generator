@@ -9,12 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@types/p5": "^1.7.6",
     "next": "15.5.2",
     "openai": "^5.16.0",
-    "p5": "^2.0.4",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-p5": "^1.4.1"
   },
   "devDependencies": {
     "typescript": "^5",

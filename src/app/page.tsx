@@ -2,7 +2,8 @@
 
 import { useState, useTransition } from 'react';
 import { generateNickname } from './actions';
-import { BackgroundAnimation } from './BackgroundAnimation';
+import { CanvasBackground } from './CanvasBackground';
+
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -18,10 +19,10 @@ export default function Home() {
   };
 
   return (
-    <div className="relative font-sans min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      {/* 背景アニメーション */}
+    <div className="relative font-sans min-h-screen bg-gray-50/40 dark:bg-gray-900/40 text-gray-900 dark:text-gray-100">
+      {/* 背景アニメーション（p5非依存のCanvas版） */}
       <div className="absolute inset-0 -z-10">
-        <BackgroundAnimation />
+        <CanvasBackground />
       </div>
 
       <header className="text-center relative z-10 p-8">
@@ -70,7 +71,7 @@ export default function Home() {
       </main>
 
       <footer className="text-center text-sm text-gray-500 mt-10 relative z-10">
-        <p>Powered by Next.js, OpenAI, and a sprinkle of p5.js ✨</p>
+        <p>Powered by Next.js, OpenAI, and a sprinkle of ✨</p>
       </footer>
     </div>
   );
